@@ -33,12 +33,16 @@ button{background:#00d26a;font-weight:bold;cursor:pointer}
 </div>
 
 <script>
-function login(){
- const u=user.value,p=pass.value;
- if(u==="admin"&&p==="123456"){
-   login.style.display="none";
-   panel.style.display="block";
- }else alert("Sai tài khoản hoặc mật khẩu");
+function login() {
+    const u = document.getElementById("user").value;
+    const p = document.getElementById("pass").value;
+
+    if (u === "admin" && p === "123456") {
+        document.getElementById("login").style.display = "none";
+        document.getElementById("panel").style.display = "block";
+    } else {
+        alert("Sai tài khoản hoặc mật khẩu");
+    }
 }
 function addFile(){
  const f=file.files[0];
