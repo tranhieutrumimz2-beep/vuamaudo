@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VuamauDo - File Manager</title>
+<style>
+body{font-family:Arial;background:#0b0b0b;color:#fff;margin:0}
+header{background:#00d26a;color:#000;padding:18px;text-align:center;font-size:28px;font-weight:bold}
+.card{max-width:420px;margin:24px auto;background:#181818;padding:20px;border-radius:16px;box-shadow:0 0 16px #00d26a}
+input,button{width:100%;padding:12px;margin-top:12px;border-radius:8px;border:none}
+input{background:#2a2a2a;color:#fff}
+button{background:#00d26a;font-weight:bold;cursor:pointer}
+#panel{display:none}
+.item{background:#222;padding:10px;border-radius:8px;margin-top:10px}
+</style>
+</head>
+<body>
+<header>VUAMAUDO</header>
+
+<div class="card" id="login">
+<h2>Đăng nhập</h2>
+<input id="user" placeholder="Tài khoản">
+<input id="pass" type="password" placeholder="Mật khẩu">
+<button onclick="login()">Đăng nhập</button>
+</div>
+
+<div class="card" id="panel">
+<h2>Quản lý tài liệu</h2>
+<input type="file" id="file">
+<button onclick="addFile()">Thêm vào danh sách</button>
+<div id="list"></div>
+</div>
+
+<script>
+function login(){
+ const u=user.value,p=pass.value;
+ if(u==="admin"&&p==="123456"){
+   login.style.display="none";
+   panel.style.display="block";
+ }else alert("Sai tài khoản hoặc mật khẩu");
+}
+function addFile(){
+ const f=file.files[0];
+ if(!f){alert("Chưa chọn tệp");return;}
+ const d=document.createElement("div");
+ d.className="item";
+ d.textContent=`📄 ${f.name} (${Math.round(f.size/1024)} KB)`;
+ list.appendChild(d);
+ file.value="";
+}
+</script>
+</body>
+</html>
